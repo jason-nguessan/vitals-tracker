@@ -1,12 +1,12 @@
 package main
 
-//Sahal Mohamed
 import (
+	"net/http"
 	"encoding/json"
 	"fmt"
 	"log"
-	"net/http"
 )
+
 
 type Article struct {
 	Title   string `json:"Title"`
@@ -15,6 +15,7 @@ type Article struct {
 }
 
 type Articles []Article
+
 
 func allArticles(w http.ResponseWriter, r *http.Request) {
 	articles := Articles{
@@ -30,12 +31,38 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Endpoint Hit: homePage")
 }
 
+
 func handleRequests() {
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/articles", allArticles)
-	log.Fatal(http.ListenAndServe(":10000", nil))
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }
 
+
 func main() {
+
+	fmt.Println("Hllo world!!")
+
 	handleRequests()
+	//nil meaning unintialized
+	err := http.ListenAndServe(":5000", nil)
+	//something is wrong
+	if err != nil {
+		panic(err.Error())
+	}
+
 }
+
+
+
+
+//eb init -p go vitals-tracker --region us-east-2
+//eb deploy
+
+////func indexHandler(w http.ResponseWriter, r *http.Request)
+//vitals-tracker init -p go go-tutorial --region us-east-2
+
+//env GOOS=linux GOARCH=arm go build -o bin/application application.go
+//GOARCH=amd64 GOOS=linux go build -o bin/application main.go
+//zip ../vitals-tracker.zip -r * .[^.]*
+//go build -o bin/application main.go
