@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/mainPages/displayVitals.dart';
+import 'package:my_app/mainPages/scanVitals.dart';
 import 'package:my_app/sharedWidgets/sizeConfig.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -86,9 +87,9 @@ class _LoginState extends State<Login> {
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: <Color>[
-                                        HexColor("#e4b9fa"),
-                                        HexColor("#d9b9fa"),
-                                        HexColor("#b9bffa")
+                                        HexColor("#ff3636"),
+                                        HexColor("#ff8c8c"),
+                                        HexColor("#fdb7b7")
                                       ],
                                     ),
                                     borderRadius: BorderRadius.all(
@@ -123,9 +124,9 @@ class _LoginState extends State<Login> {
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: <Color>[
-                                        HexColor("#e4b9fa"),
-                                        HexColor("#d9b9fa"),
-                                        HexColor("#b9bffa")
+                                        HexColor("#ff3636"),
+                                        HexColor("#ff8c8c"),
+                                        HexColor("#fdb7b7")
                                       ],
                                     ),
                                     borderRadius: BorderRadius.all(
@@ -140,7 +141,11 @@ class _LoginState extends State<Login> {
                                   ),
                                   padding: EdgeInsets.all(
                                       SizeConfig.safeBlockHorizontal * 3.5)),
-                              onPressed: () {},
+                              onPressed: () {
+                                MaterialPageRoute route = MaterialPageRoute(
+                                    builder: (context) => ScanVitals());
+                                Navigator.of(context).push(route);
+                              },
                             ),
                           ],
                         )
